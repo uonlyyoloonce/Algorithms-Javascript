@@ -35,7 +35,11 @@
 // }
 
 //merge two sorted array
-
+/*
+48,286
+±7.79%
+fastest
+*/
 function mergeSortedArray1(a, b){
     var merged = [], 
         aElm = a[0],
@@ -47,13 +51,7 @@ function mergeSortedArray1(a, b){
       return b;
     if(b.length ==0)
       return a;
-    /* 
-    if aElm or bElm exists we will insert to merged array
-    (will go inside while loop)
-     to insert: aElm exists and bElm doesn't exists
-               or both exists and aElm < bElm
-      this is the critical part of the example            
-    */
+  
     while(aElm || bElm){
      if((aElm && !bElm) || aElm < bElm){
        merged.push(aElm);
@@ -66,11 +64,48 @@ function mergeSortedArray1(a, b){
     }
     return merged;
   }
-
+/*
+33,683
+±2.94%
+27% slower
+*/
   function mergeSortedArray2(a, b){
     
     return [...a,...b].sort((a,b)=>a-b);
   }
+/*
+45,569
+±1.83%
+0.11% slower
+*/
+  function mergeSortedArray3(a, b){
+    
+   return a.concat(b).sort((a,b)=>a-b);
+  }
 
-  console.log(mergeSortedArray1([2,5,6,9], [1,2,3,29]));
-  console.log(mergeSortedArray2([2,5,6,9], [1,2,3,29]));
+  function mergeSortedArray3(a, b){
+       var alen=a.length,blen=b.length;
+       var returnArry=[];
+       if(alen===0)return b;
+       if(blen===0)return a;
+       if(a[alen]<b[0])return a.concat(b);
+       if(b[blen]<a[0]) return b.concat(a);
+       
+
+  }
+
+  function findLastIndex(a,b){
+      var lasta=a[a.length-1];
+      var Idx=b.length-1;
+     var minIdx=0;
+    
+      while(lasta<b[Idx])
+      {
+        
+      }
+
+  }
+  console.log(mergeSortedArray1([2,5,6,9], [1,2,3,4,6,7,29]));
+  console.log(mergeSortedArray2([2,5,6,9], [1,2,3,4,6,7,29]));
+  console.log(mergeSortedArray3([2,5,6,9], [1,2,3,4,6,7,29]));
+

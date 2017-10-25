@@ -40,72 +40,140 @@
 ±7.79%
 fastest
 */
-function mergeSortedArray1(a, b){
-    var merged = [], 
-        aElm = a[0],
-        bElm = b[0],
-        i = 1,
-        j = 1;
+// function mergeSortedArray1(a, b){
+//     var merged = [], 
+//         aElm = a[0],
+//         bElm = b[0],
+//         i = 1,
+//         j = 1;
     
-    if(a.length ==0)
-      return b;
-    if(b.length ==0)
-      return a;
+//     if(a.length ==0)
+//       return b;
+//     if(b.length ==0)
+//       return a;
   
-    while(aElm || bElm){
-     if((aElm && !bElm) || aElm < bElm){
-       merged.push(aElm);
-       aElm = a[i++];
-     }   
-     else {
-       merged.push(bElm);
-       bElm = b[j++];
+//     while(aElm || bElm){
+//      if((aElm && !bElm) || aElm < bElm){
+//        merged.push(aElm);
+//        aElm = a[i++];
+//      }   
+//      else {
+//        merged.push(bElm);
+//        bElm = b[j++];
+//      }
+//     }
+//     return merged;
+//   }
+// /*
+// 33,683
+// ±2.94%
+// 27% slower
+// */
+//   function mergeSortedArray2(a, b){
+    
+//     return [...a,...b].sort((a,b)=>a-b);
+//   }
+// /*
+// 45,569
+// ±1.83%
+// 0.11% slower
+// */
+//   function mergeSortedArray3(a, b){
+    
+//    return a.concat(b).sort((a,b)=>a-b);
+//   }
+
+  
+//   console.log(mergeSortedArray1([2,5,6,9], [1,2,3,4,6,7,29]));
+//   console.log(mergeSortedArray2([2,5,6,9], [1,2,3,4,6,7,29]));
+//   console.log(mergeSortedArray3([2,5,6,9], [1,2,3,4,6,7,29]));
+
+/**
+ * swap number without temp
+ */
+// function swap(a,b)
+// {
+//     console.log('before swap: ','a: ', a, 'b: ', b);
+//     b=a+b;
+//     a=b-a;
+//     b=b-a;
+//     console.log('after swap: ','a: ', a, 'b: ', b);  
+// }
+
+// swap(123123123,312231);
+
+/**
+ * remove duplicate char
+ */
+
+// function removeDuplicateChar1(str){
+//     var len = str.length,
+//         char, 
+//         charCount = {}, 
+//         newStr = [];
+//     for(var i =0; i<len; i++){
+//       char = str[i];
+//       if(charCount[char]){
+//         charCount[char]++;
+//       }
+//       else
+//         charCount[char] = 1;
+//     }
+//     for (var j in charCount){
+//       if (charCount[j]==1)
+//          newStr.push(j);
+//     }
+//     return newStr.join('');
+//   }
+//   function removeDuplicateChar2(str){
+//     var len = str.length,
+//         newStr = [];
+//     for(var i=0;i<len;i++)
+//     {
+//         if(str.indexOf(str[i])==str.lastIndexOf(str[i]))
+//         newStr.push(str[i]);
+//     }
+//     return newStr.join('');
+//   }
+  
+//  console.log( removeDuplicateChar1('Learn more javascript dude'));
+//  console.log( removeDuplicateChar2('Learn more javascript dude') );
+
+
+
+ /**
+ * Given an array of integers, output a list of four integers 
+ * that sum to zero (the same input integer can be used multiple times), 
+ * or indicate that no such set of four integers exists. For example, given the array (2 3 1 0 -4 -1), 
+ * the set of four integers (3 1 0 -4) sums to zero, as does the set (0 0 0 0).
+ */
+function sum4(a){
+ var aBool=false;
+ a=a.concat(a).concat(a);
+ 
+ for(var i=0;i<a.length;i++)
+ {
+     var a1=a[i]
+     for(var k=i+1;k<a.length-k;k++)
+     {
+        var a2=a[k]
+        for(var j=k+1;j<a.length-j;j++)
+        {
+            var a3=a[j]
+            for(var m=j+1;m<a.length-m;m++)
+            {
+                var a4=a[m];
+                if(a1+a2+a3+a4==0) 
+                {
+                console.log('array is :'+a1+' '+a2+' '+a3+' '+a4+' ');
+                aBool=true;
+                }
+            }
+        } 
      }
-    }
-    return merged;
-  }
-/*
-33,683
-±2.94%
-27% slower
-*/
-  function mergeSortedArray2(a, b){
-    
-    return [...a,...b].sort((a,b)=>a-b);
-  }
-/*
-45,569
-±1.83%
-0.11% slower
-*/
-  function mergeSortedArray3(a, b){
-    
-   return a.concat(b).sort((a,b)=>a-b);
-  }
+ }
+  if(!aBool)console.log('no sets');
+}
 
-  function mergeSortedArray3(a, b){
-       var alen=a.length,blen=b.length;
-       var returnArry=[];
-       if(alen===0)return b;
-       if(blen===0)return a;
-       if(a[alen]<b[0])return a.concat(b);
-       if(b[blen]<a[0]) return b.concat(a);
-       
-
-  }
-
-  function findLastIndex(a,b){
-      var lasta=a[a.length-1];
-      var Idx=b.length-1;
-     var minIdx=0;
-    
-      while(lasta<b[Idx])
-      {
-        
-      }
-
-  }
-  console.log(mergeSortedArray1([2,5,6,9], [1,2,3,4,6,7,29]));
-  console.log(mergeSortedArray2([2,5,6,9], [1,2,3,4,6,7,29]));
-  console.log(mergeSortedArray3([2,5,6,9], [1,2,3,4,6,7,29]));
-
+a=[1,2,3,4,5,6,7,8,9,0,1,-2,-3,-4,-5,-6,-7,-8,-9];
+sum4(a);

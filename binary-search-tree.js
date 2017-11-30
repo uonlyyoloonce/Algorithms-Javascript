@@ -49,3 +49,4 @@ function bstLookup(node,target)
     if(node===undefined) return false;
 
 }
+
